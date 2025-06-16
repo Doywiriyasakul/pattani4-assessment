@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสอบถามการประเมินความต้องการจำเป็นในการพัฒนาการศึกษาจังหวัดปัตตานี</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            background: #fafafa;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+            margin-left: 0;
+            transform: scale(1.2);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .radio-item:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+
+        .radio-item input[type="radio"]:checked + span {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .evaluation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .evaluation-table th {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .current-status-header {
+            background: linear-gradient(45deg, #e67e22, #d35400) !important;
+            border-right: 3px solid #fff !important;
+        }
+
+        .expected-status-header {
+            background: linear-gradient(45deg, #27ae60, #229954) !important;
+            border-left: 3px solid #fff !important;
+        }
+
+        .rating-cell-current {
+            border-right: 1px solid #bdc3c7;
+        }
+
+        .rating-cell-current:last-of-type {
+            border-right: 3px solid #e74c3c !important;
+        }
+
+        .rating-cell-expected {
+            border-left: 1px solid #bdc3c7;
+        }
+
+        .evaluation-table td {
+            padding: 12px 8px;
+            text-align: center;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .evaluation-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .age-group-header {
+            background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .question-cell {
+            text-align: left !important;
+            font-weight: 500;
+            color: #2c3e50;
+            max-width: 400px;
+        }
+
+        .rating-input {
+            margin: 0;
+            transform: scale(1.3);
+            accent-color: #3498db;
+        }
+
+        .scale-legend {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .scale-legend h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .scale-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 5px;
+        }
+
+        .scale-number {
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .evaluation-table {
+                font-size: 12px;
+            }
+            
+            .evaluation-table th,
+            .evaluation-table td {
+                padding: 8px 4px;
+            }
+            
+            .question-cell {
+                min-width: 250px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>แบบสอบถามการประเมินความต้องการจำเป็นในการพัฒนาการศึกษาจังหวัดปัตตานี</h1>
+            <p>เพื่อประกอบการทบทวนแผนพัฒนาการศึกษาจังหวัดปัตตานี พ.ศ.2569-2573</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <form id="surveyForm">
+            <!-- ตอนที่ 1: ข้อมูลพื้นฐาน -->
+            <div class="section" data-section="1">
+                <div class="section-title">ตอนที่ 1: ข้อมูลเกี่ยวกับสถานภาพและข้อมูลพื้นฐานของผู้ตอบแบบสอบถาม</div>
+                
+                <div class="form-group">
+                    <label>1. เพศ</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <span>ชาย</span>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            <span>หญิง</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>2. อายุ</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="age1" name="age" value="20-30" required>
+                            <span>ช่วงอายุ 20-30 ปี</span>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="age2" name="age" value="31-40" required>
+                            <span>ช่วงอายุ 31-40 ปี</span>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="age3" name="age" value="41-50" required>
+                            <span>ช่วงอายุ 41-50 ปี</span>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="age4" name="age" value="51-60" required>
+                            <span>ช่วงอายุ 51-60 ปี</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ตอนที่ 2: แบบประเมิน -->
+            <div class="section" data-section="2">
+                <div class="section-title">ตอนที่ 2: แบบประเมินความต้องการจำเป็นในการพัฒนาการศึกษา</div>
+                
+                <div class="scale-legend">
+                    <h4>คำอธิบายระดับการประเมิน</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <strong>สภาพจริงในปัจจุบัน:</strong>
+                            <div class="scale-item">
+                                <div class="scale-number">5</div>
+                                <span>เห็นด้วยในระดับมากที่สุด</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">4</div>
+                                <span>เห็นด้วยในระดับมาก</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">3</div>
+                                <span>เห็นด้วยในระดับปานกลาง</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">2</div>
+                                <span>เห็นด้วยในระดับน้อย</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">1</div>
+                                <span>เห็นด้วยในระดับน้อยที่สุด</span>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>สภาพที่คาดหวัง:</strong>
+                            <div class="scale-item">
+                                <div class="scale-number">5</div>
+                                <span>คาดหวังในระดับมากที่สุด</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">4</div>
+                                <span>คาดหวังในระดับมาก</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">3</div>
+                                <span>คาดหวังในระดับปานกลาง</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">2</div>
+                                <span>คาดหวังในระดับน้อย</span>
+                            </div>
+                            <div class="scale-item">
+                                <div class="scale-number">1</div>
+                                <span>คาดหวังในระดับน้อยที่สุด</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" style="width: 5%;">ข้อ</th>
+                            <th rowspan="2" style="width: 40%;">ข้อคำถาม</th>
+                            <th colspan="5" class="current-status-header">สภาพจริงในปัจจุบัน<br>ด้านการศึกษา</th>
+                            <th colspan="5" class="expected-status-header">สภาพที่คาดหวัง<br>ด้านการศึกษา</th>
+                        </tr>
+                        <tr>
+                            <th class="current-status-header">1</th>
+                            <th class="current-status-header">2</th>
+                            <th class="current-status-header">3</th>
+                            <th class="current-status-header">4</th>
+                            <th class="current-status-header">5</th>
+                            <th class="expected-status-header">1</th>
+                            <th class="expected-status-header">2</th>
+                            <th class="expected-status-header">3</th>
+                            <th class="expected-status-header">4</th>
+                            <th class="expected-status-header">5</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evaluationTable">
+                        <!-- จะถูกเติมด้วย JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ตอนที่ 3: ข้อเสนอแนะ -->
+            <div class="section" data-section="3">
+                <div class="section-title">ตอนที่ 3: ข้อเสนอแนะเพิ่มเติมเพื่อการพัฒนาการศึกษาของจังหวัดปัตตานี</div>
+                <div class="form-group">
+                    <label>กรุณาให้ข้อเสนอแนะหรือความคิดเห็นเพิ่มเติม:</label>
+                    <textarea name="suggestions" placeholder="โปรดระบุข้อเสนอแนะ ความคิดเห็น หรือประเด็นที่ท่านเห็นว่าสำคัญสำหรับการพัฒนาการศึกษาในจังหวัดปัตตานี..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">ส่งแบบสอบถาม</button>
+        </form>
+
+        <!-- ปุ่มสำหรับผู้ดูแล -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="exportData()" style="background: #95a5a6; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;">
+                📊 ส่งออกข้อมูล (สำหรับผู้ดูแล)
+            </button>
+            <button onclick="viewStoredData()" style="background: #34495e; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; margin-left: 10px;">
+                👁️ ดูข้อมูลที่เก็บไว้
+            </button>
+        </div>
+    </div>
+
+    <!-- คำแนะนำการติดตั้ง Google Sheets -->
+    <div style="background: #ecf0f1; padding: 20px; margin-top: 20px; border-radius: 10px; font-size: 14px;">
+        <h3 style="color: #2c3e50;">📋 คำแนะนำการเชื่อมต่อ Google Sheets:</h3>
+        <ol style="color: #34495e; line-height: 1.6;">
+            <li>สร้าง Google Apps Script ใหม่ที่ <a href="https://script.google.com" target="_blank">script.google.com</a></li>
+            <li>วางโค้ด Google Apps Script ที่ให้ไว้ข้างล่าง</li>
+            <li>Deploy เป็น Web App และคัดลอก URL</li>
+            <li>แทนที่ 'YOUR_GOOGLE_SCRIPT_URL_HERE' ในโค้ดด้วย URL ที่ได้</li>
+            <li>ข้อมูลจะถูกส่งไป Google Sheets อัตโนมัติ</li>
+        </ol>
+    </div>
+
+    <script>
+        // ข้อมูลคำถาม
+        const questions = [
+            // ระดับก่อนอนุบาล (0-3 ปี)
+            { group: "ระดับก่อนอนุบาล (0-3 ปี)", items: [
+                "เด็กมีพัฒนาการทางร่างกาย อารมณ์ และสติปัญญาเหมาะสมกับวัย",
+                "ผู้ปกครองมีความรู้ความเข้าใจในการส่งเสริมพัฒนาการเด็ก",
+                "ศูนย์พัฒนาเด็กเล็กมีครูและบุคลากรที่มีคุณภาพ",
+                "มีอุปกรณ์และของเล่นพัฒนาทักษะที่เหมาะสมกับวัย",
+                "เด็กสามารถปรับตัวเข้ากับการอยู่ร่วมกับผู้อื่นได้",
+                "โรงเรียน/ศูนย์เด็กเล็กมีระบบดูแลสุขภาพและโภชนาการที่ดี"
+            ]},
+            // ระดับปฐมวัย (4-6 ปี)
+            { group: "ระดับปฐมวัย (4-6 ปี)", items: [
+                "เด็กมีทักษะการฟัง พูด อ่าน และเขียนพื้นฐานที่เหมาะสม",
+                "นักเรียนสามารถควบคุมอารมณ์และอยู่ร่วมกับผู้อื่นได้",
+                "ครูมีความรู้และทักษะในการสอนเด็กปฐมวัยอย่างเหมาะสม",
+                "โรงเรียนมีการจัดการเรียนรู้ที่สอดคล้องกับพัฒนาการเด็ก",
+                "เด็กได้รับอาหารที่มีคุณภาพและเพียงพอทุกวัน",
+                "ผู้ปกครองมีส่วนร่วมในการเรียนรู้ของเด็ك",
+                "ครูมีสื่อการสอนและอุปกรณ์ประกอบการเรียนครบถ้วน",
+                "เด็กได้รับการตรวจสุขภาพและส่งเสริมพัฒนาการอย่างต่อเนื่อง"
+            ]},
+            // ระดับประถมศึกษา
+            { group: "ระดับประถมศึกษา", items: [
+                "นักเรียนมีทักษะการอ่านออกเขียนได้อย่างเหมาะสม",
+                "นักเรียนสามารถคิดวิเคราะห์และแก้ปัญหาเบื้องต้นได้",
+                "โรงเรียนมีสื่อการเรียนรู้ที่เพียงพอและทันสมัย",
+                "มีระบบป้องกันพฤติกรรมเสี่ยง เช่น ติดเกม ติดเพื่อน"
+            ]},
+            // ระดับมัธยมศึกษาตอนต้น
+            { group: "ระดับมัธยมศึกษาตอนต้น", items: [
+                "นักเรียนมีแนวทางในการศึกษาต่อหรือประกอบอาชีพ",
+                "นักเรียนสามารถควบคุมอารมณ์และมีปฏิสัมพันธ์ที่ดี",
+                "มีการแนะแนวการเรียนและการใช้ชีวิตอย่างเหมาะสม",
+                "โรงเรียนมีมาตรการป้องกันสารเสพติดและพฤติกรรมเสี่ยง",
+                "ครูสามารถจัดการเรียนรู้ที่เน้นผู้เรียนเป็นสำคัญ",
+                "นักเรียนสามารถเข้าถึงข้อมูล ข่าวสาร และแหล่งเรียนรู้",
+                "มีระบบติดตามช่วยเหลือนักเรียนที่มีความเสี่ยงต่อการออกกลางคัน"
+            ]},
+            // ระดับมัธยมศึกษาตอนปลาย/ปวช.
+            { group: "ระดับมัธยมศึกษาตอนปลาย/ปวช.", items: [
+                "นักเรียนสามารถวางแผนศึกษาต่อหรือเข้าสู่อาชีพได้อย่างชัดเจน",
+                "โรงเรียนมีการแนะแนวอาชีพและศึกษาต่ออย่างมีระบบ",
+                "นักเรียนมีทักษะการคิดวิเคราะห์และตัดสินใจได้อย่างเหมาะสม",
+                "มีการเรียนการสอนที่เน้นทักษะอาชีพและการปฏิบัติจริง",
+                "นักเรียนสามารถเข้าถึงทุนการศึกษาและการสนับสนุนด้านการเงิน"
+            ]},
+            // ระดับอุดมศึกษา/ปวส
+            { group: "ระดับอุดมศึกษา/ปวส", items: [
+                "นักศึกษามีแนวทางพัฒนาตนเองเพื่อเข้าสู่ตลาดแรงงาน",
+                "สถาบันมีหลักสูตรที่ตอบโจทย์พื้นที่และสังคมท้องถิ่น",
+                "นักศึกษามีทักษะในการคิด วิเคราะห์ และสื่อสารได้ดี",
+                "สถาบันมีความร่วมมือกับภาคธุรกิจหรือหน่วยงานในพื้นที่",
+                "นักศึกษามีทักษะดิจิทัลและสามารถเรียนรู้ด้วยตนเอง",
+                "สถาบันมีระบบช่วยเหลือนักศึกษาที่ประสบปัญหาด้านการเรียน",
+                "นักศึกษามีแรงจูงใจในการเรียนและมองเห็นเป้าหมายชีวิต"
+            ]},
+            // กลุ่มเปราะบาง/ผู้มีความต้องการพิเศษ
+            { group: "กลุ่มเปราะบาง/ผู้มีความต้องการพิเศษ", items: [
+                "นักเรียนกลุ่มเปราะบางได้รับโอกาสเข้าถึงการศึกษาอย่างเท่าเทียม",
+                "ครูมีความรู้ในการจัดการเรียนรู้เฉพาะบุคคล",
+                "นักเรียนพิการหรือมีปัญหาทางร่างกายได้รับการช่วยเหลือในการเรียนรู้",
+                "นักเรียนกลุ่มหลุดจากระบบได้รับโอกาสกลับเข้าสู่ระบบอย่างเหมาะสม",
+                "นักเรียนที่มีความสามารถพิเศษได้รับการส่งเสริมต่อยอดศักยภาพ"
+            ]}
+        ];
+
+        // สร้างตาราง
+        function createEvaluationTable() {
+            const tbody = document.getElementById('evaluationTable');
+            let questionNumber = 1;
+
+            questions.forEach(group => {
+                // สร้างแถวหัวข้อกลุ่ม
+                const groupRow = document.createElement('tr');
+                groupRow.innerHTML = `<td colspan="12" class="age-group-header">${group.group}</td>`;
+                tbody.appendChild(groupRow);
+
+                // สร้างแถวคำถาม
+                group.items.forEach(question => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${questionNumber}</td>
+                        <td class="question-cell">${question}</td>
+                        ${[1,2,3,4,5].map((rating, index) => 
+                            `<td class="rating-cell-current${index === 4 ? ' rating-cell-current' : ''}"><input type="radio" name="current_${questionNumber}" value="${rating}" class="rating-input" required></td>`
+                        ).join('')}
+                        ${[1,2,3,4,5].map(rating => 
+                            `<td class="rating-cell-expected"><input type="radio" name="expected_${questionNumber}" value="${rating}" class="rating-input" required></td>`
+                        ).join('')}
+                    `;
+                    tbody.appendChild(row);
+                    questionNumber++;
+                });
+            });
+        }
+
+        // อัพเดทแถบความคืบหนา
+        function updateProgress() {
+            const form = document.getElementById('surveyForm');
+            const allInputs = form.querySelectorAll('input[required], textarea');
+            const filledInputs = Array.from(allInputs).filter(input => {
+                if (input.type === 'radio') {
+                    return form.querySelector(`input[name="${input.name}"]:checked`);
+                }
+                return input.value.trim() !== '';
+            });
+
+            const progress = (filledInputs.length / allInputs.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // จัดการการส่งฟอร์ม
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            // แสดง Loading
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'กำลังส่งข้อมูล...';
+            submitBtn.disabled = true;
+            
+            try {
+                // รวบรวมข้อมูล
+                const formData = new FormData(e.target);
+                const data = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+
+                // เพิ่มข้อมูลเวลา
+                data.timestamp = new Date().toLocaleString('th-TH');
+                data.id = Date.now().toString();
+
+                // ส่งข้อมูลไป Google Sheets (ถ้าตั้งค่าแล้ว)
+                await sendToGoogleSheets(data);
+
+                // บันทึกในระบบท้องถิ่น (สำรอง)
+                saveLocally(data);
+
+                // แสดงผลสำเร็จ
+                showSuccessMessage();
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+            } finally {
+                // คืนค่าปุ่ม
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // ส่งข้อมูลไป Google Sheets
+        async function sendToGoogleSheets(data) {
+            // *** ตั้งค่า URL ของ Google Apps Script Web App ที่นี่ ***
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzinGZa6BXDDWR8vv6_8VDvTZIVbof6l3cE8IKFcFZV2g5c4ZdPVeL8GxID6vDZ5-E/exec';
+            
+            if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbzinGZa6BXDDWR8vv6_8VDvTZIVbof6l3cE8IKFcFZV2g5c4ZdPVeL8GxID6vDZ5-E/exec') {
+                console.log('Google Sheets URL not configured');
+                return;
+            }
+
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+        }
+
+        // บันทึกข้อมูลในระบบท้องถิ่น
+        function saveLocally(data) {
+            const surveys = JSON.parse(localStorage.getItem('pattaniSurveys') || '[]');
+            surveys.push(data);
+            localStorage.setItem('pattaniSurveys', JSON.stringify(surveys));
+            console.log('Data saved locally:', data);
+        }
+
+        // แสดงข้อความสำเร็จ
+        function showSuccessMessage() {
+            // สร้าง Modal แสดงผลสำเร็จ
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); display: flex; align-items: center;
+                justify-content: center; z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 500px; margin: 20px;">
+                    <div style="font-size: 60px; color: #27ae60; margin-bottom: 20px;">✅</div>
+                    <h2 style="color: #2c3e50; margin-bottom: 15px;">ส่งข้อมูลสำเร็จ!</h2>
+                    <p style="color: #7f8c8d; line-height: 1.6;">
+                        ขอบคุณสำหรับการตอบแบบสอบถาม<br>
+                        ข้อมูลของท่านได้รับการบันทึกเรียบร้อยแล้ว<br>
+                        และจะนำไปใช้ในการพัฒนาการศึกษาของจังหวัดปัตตานี
+                    </p>
+                    <button onclick="this.closest('div').parentElement.remove()" 
+                            style="background: #3498db; color: white; border: none; padding: 12px 30px; 
+                                   border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 20px;">
+                        ปิด
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        // ฟังก์ชันส่งออกข้อมูล (สำหรับผู้ดูแล)
+        function exportData() {
+            const surveys = JSON.parse(localStorage.getItem('pattaniSurveys') || '[]');
+            if (surveys.length === 0) {
+                alert('ไม่มีข้อมูลให้ส่งออก');
+                return;
+            }
+
+            // แปลงเป็น CSV
+            const headers = Object.keys(surveys[0]);
+            const csvContent = [
+                headers.join(','),
+                ...surveys.map(row => headers.map(field => row[field] || '').join(','))
+            ].join('\n');
+
+            // ดาวน์โหลดไฟล์
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `pattani_survey_${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
+
+        // เริ่มต้น
+        document.addEventListener('DOMContentLoaded', function() {
+            createEvaluationTable();
+            
+            // ติดตามการเปลี่ยนแปลงในฟอร์ม
+            document.getElementById('surveyForm').addEventListener('change', updateProgress);
+            document.getElementById('surveyForm').addEventListener('input', updateProgress);
+            document.getElementById('surveyForm').addEventListener('submit', handleSubmit);
+            
+            // อัพเดทความคืบหน้าครั้งแรก
+            updateProgress();
+
+            // เพิ่มฟังก์ชันดูข้อมูลที่เก็บไว้
+            window.viewStoredData = function() {
+                const surveys = JSON.parse(localStorage.getItem('pattaniSurveys') || '[]');
+                if (surveys.length === 0) {
+                    alert('ไม่มีข้อมูลที่เก็บไว้');
+                    return;
+                }
+                
+                const dataWindow = window.open('', '_blank');
+                dataWindow.document.write(`
+                    <html>
+                    <head><title>ข้อมูลแบบสอบถาม - จังหวัดปัตตานี</title></head>
+                    <body style="font-family: Arial; padding: 20px;">
+                        <h2>ข้อมูลแบบสอบถามที่เก็บไว้ (${surveys.length} รายการ)</h2>
+                        <pre>${JSON.stringify(surveys, null, 2)}</pre>
+                    </body>
+                    </html>
+                `);
+            };
+        });
+    </script>
+</body>
+</html>
